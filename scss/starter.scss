@@ -78,6 +78,121 @@ $success: #7952b3;
 // Custom styles
 //
 
+.newsletter-section {
+  width: min(720px, calc(100% - 2rem));
+  margin: 2.5rem auto 0;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid #dee2e6;
+}
+
+.newsletter-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.newsletter-form {
+  width: 100%;
+}
+
+.newsletter-field {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+
+.newsletter-input {
+  height: calc(1.5em + .75rem + 2px);
+  flex: 1 1 auto;
+  border-radius: .25rem;
+}
+
+.newsletter-button {
+  white-space: nowrap;
+}
+
+.newsletter-error {
+  display: block;
+  min-height: 1.25rem;
+  color: var(--danger, #dc3545);
+  margin-top: .5rem;
+}
+
+.newsletter-toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  min-width: min(320px, calc(100vw - 2rem));
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .75rem 1rem;
+  color: #fff;
+  background: var(--success, #7952b3);
+  border-radius: .5rem;
+  box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.2);
+  transform: translateY(140%);
+  opacity: 0;
+  transition: opacity .4s ease, transform .5s ease;
+  z-index: 9999;
+}
+
+.newsletter-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+  animation: toast-in .4s ease;
+}
+
+.newsletter-toast.hide {
+  animation: toast-out .4s ease forwards;
+}
+
+.newsletter-toast-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,.18);
+  font-weight: 700;
+}
+
+.newsletter-toast-text {
+  font-size: .95rem;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toast-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .newsletter-field {
+    flex-wrap: wrap;
+  }
+
+  .newsletter-button {
+    width: 100%;
+  }
+}
+
 @import "icon-list";
 
 body {

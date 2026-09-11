@@ -81,6 +81,23 @@
       <p class="text-muted">Created and open sourced by the Bootstrap team. Licensed MIT.</p>
     </div>
 
+    <section class="newsletter-section">
+      <div class="newsletter-wrap">
+        <form class="newsletter-form" id="newsletterForm" novalidate netlify>
+          <div class="newsletter-field">
+            <input type="email" class="form-control newsletter-input" id="newsletterEmail" name="email" placeholder="Tu email" aria-label="Email" required>
+            <button type="submit" class="btn btn-primary newsletter-button">Suscribirme</button>
+          </div>
+          <small class="newsletter-error" id="newsletterError"></small>
+        </form>
+      </div>
+    </section>
+
+    <div class="newsletter-toast" id="newsletterToast" role="alert" aria-live="polite">
+      <span class="newsletter-toast-icon">✓</span>
+      <span class="newsletter-toast-text">¡E-mail enviado correctamente!</span>
+    </div>
+
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script type="module" src="assets/js/starter.js"></script>
   </body>

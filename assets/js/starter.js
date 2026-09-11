@@ -20,3 +20,37 @@
 
 import "../../node_modules/bootstrap/js/dist/util.js";
 import "../../node_modules/bootstrap/js/dist/modal.js";
+
+const form = document.getElementById("newsletterForm");
+const emailInput = document.getElementById("newsletterEmail");
+const errorMessage = document.getElementById("newsletterError");
+const toast = document.getElementById("newsletterToast");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const email = emailInput.value.trim();
+  const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  if (!validEmail) {
+    errorMessage.textContent = "Introduce un email válido";
+    emailInput.classList.add("is-invalid");
+    return;
+  }
+
+  errorMessage.textContent = "";
+  emailInput.classList.remove("is-invalid");
+
+  toast.classList.remove("hide");
+  toast.classList.add("show");
+
+  setTimeout(function () {
+    toast.classList.remove("show");
+    toast.classList.add("hide");
+  }, 2200);
+
+  setTimeout(function () {
+    toast.classList.remove("hide");
+    emailInput.value = "";
+  }, 2600);
+});
