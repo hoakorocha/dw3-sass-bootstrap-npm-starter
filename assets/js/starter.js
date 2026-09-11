@@ -41,16 +41,31 @@ form.addEventListener("submit", function (event) {
   errorMessage.textContent = "";
   emailInput.classList.remove("is-invalid");
 
-  toast.classList.remove("hide");
-  toast.classList.add("show");
+  const formData = new FormData(form);
+  const payload = new URLSearchParams(formData);
 
-  setTimeout(function () {
-    toast.classList.remove("show");
-    toast.classList.add("hide");
-  }, 2200);
+  fetch(form.action || window.location.href, {
+    method: form.method || "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: payload
+  })
+    .then(function () {
+      toast.classList.remove("hide");
+      toast.classList.add("show");
 
-  setTimeout(function () {
-    toast.classList.remove("hide");
-    emailInput.value = "";
-  }, 2600);
+      setTimeout(function () {
+        toast.classList.remove("show");
+        toast.classList.add("hide");
+      }, 2200);
+
+      setTimeout(function () {
+        toast.classList.remove("hide");
+        emailInput.value = "";
+      }, 2600);
+    })
+    .catch(function () {
+      errorMessage.textContent = "No se pudo enviar el email";
+    });
 });
