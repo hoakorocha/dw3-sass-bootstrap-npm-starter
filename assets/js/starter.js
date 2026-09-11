@@ -42,9 +42,9 @@ form.addEventListener("submit", function (event) {
   emailInput.classList.remove("is-invalid");
 
   const formData = new FormData(form);
-  const payload = new URLSearchParams(formData);
+  const payload = new URLSearchParams(formData).toString();
 
-  fetch(form.action || window.location.href, {
+  fetch(form.action || "/", {
     method: form.method || "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
