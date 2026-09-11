@@ -53,6 +53,7 @@ form.addEventListener("submit", function (event) {
   })
     .then(function () {
       toast.classList.remove("hide");
+      toast.classList.remove("show");
       toast.classList.add("show");
 
       setTimeout(function () {
